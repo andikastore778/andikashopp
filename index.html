@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANDIKA STORE - Premium Panel Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap');
+        
+        :root {
+            --neon-blue: #0ff;
+            --neon-pink: #f0f;
+            --neon-purple: #90f;
+            --neon-green: #0f6;
+            --dark-bg: #0a0a12;
+            --card-bg: rgba(20, 20, 30, 0.8);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: var(--dark-bg);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-family: 'Rajdhani', sans-serif;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(15, 255, 255, 0.03) 0%, transparent 25%),
+                radial-gradient(circle at 90% 80%, rgba(255, 0, 255, 0.03) 0%, transparent 25%);
+            position: relative;
+        }
+
+        /* Animated grid background */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(rgba(15, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(15, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -1;
+            animation: gridScroll 120s linear infinite;
+        }
+
+        @keyframes gridScroll {
+            0% { background-position: 0 0; }
+            100% { background-position: 1000px 1000px; }
+        }
+        
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 0;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+        }
+        
+        .logo img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--neon-blue);
+            box-shadow: 0 0 20px var(--neon-blue);
+            transition: all 0.5s ease;
+        }
+
+        .logo:hover img {
+            transform: rotate(15deg);
+            box-shadow: 0 0 30px var(--neon-pink);
+        }
+        
+        .logo-text h1 {
+            font-size: 32px;
+            font-family: 'Orbitron', sans-serif;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple), var(--neon-pink));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px rgba(144, 0, 255, 0.5);
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+        
+        .logo-text p {
+            font-size: 16px;
+            color: #aaa;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .social-links a {
+            color: #fff;
+            font-size: 28px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            position: relative;
+        }
+        
+        .social-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--neon-blue);
+            transition: width 0.3s ease;
+        }
+        
+        .social-links a:hover::after {
+            width: 100%;
+        }
+        
+        .social-links a.whatsapp:hover {
+            color: #25D366;
+            text-shadow: 0 0 20px #25D366;
+        }
+        
+        .social-links a.instagram:hover {
+            color: #E1306C;
+            text-shadow: 0 0 20px #E1306C;
+        }
+        
+        .social-links a.channel:hover {
+            color: #0088CC;
+            text-shadow: 0 0 20px #0088CC;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 60px 0;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            font-family: 'Orbitron', sans-serif;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 30px rgba(255, 0, 255, 0.5);
+            letter-spacing: 3px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            color: #ccc;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        
+        .neon-box {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 30px rgba(15, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .neon-box:hover {
+            box-shadow: 0 0 50px rgba(15, 255, 255, 0.3);
+            transform: translateY(-10px);
+        }
+        
+        .neon-box::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            z-index: -1;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple), var(--neon-pink));
+            background-size: 200% 200%;
+            border-radius: 22px;
+            animation: gradient 6s ease infinite;
+            opacity: 0.7;
+        }
+        
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        .neon-box h3 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--neon-blue);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+        }
+        
+        .neon-box h3 i {
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+        
+        .product-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .product-item {
+            background: rgba(30, 30, 40, 0.7);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+        
+        .product-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.1),
+                transparent
+            );
+            transition: 0.5s;
+        }
+        
+        .product-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            border-color: var(--neon-blue);
+        }
+        
+        .product-item:hover::before {
+            left: 100%;
+        }
+        
+        .product-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #fff;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .product-item h4::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--neon-blue);
+        }
+        
+        .product-item .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--neon-green);
+            margin-bottom: 20px;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+        }
+        
+        .product-item p {
+            font-size: 1rem;
+            color: #bbb;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+        
+        .product-item .buy-btn {
+            display: inline-block;
+            padding: 10px 25px;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(15, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .product-item .buy-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--neon-pink), var(--neon-blue));
+            transition: 0.5s;
+            z-index: -1;
+        }
+        
+        .product-item .buy-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(15, 255, 255, 0.5);
+        }
+        
+        .product-item .buy-btn:hover::before {
+            left: 0;
+        }
+        
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+        
+        .payment-method {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background: rgba(40, 40, 50, 0.7);
+            border-radius: 15px;
+            border-left: 5px solid var(--neon-blue);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+        
+        .payment-method:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .payment-method img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+        
+        .payment-method .info h4 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: #fff;
+            font-weight: 700;
+        }
+        
+        .payment-method .info p {
+            font-size: 1rem;
+            color: #aaa;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(15, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 1px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(15, 255, 255, 0.5);
+        }
+        
+        .btn-neon {
+            position: relative;
+        }
+        
+        .btn-neon::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255, 255, 255, 0) 45%,
+                rgba(255, 255, 255, 0.8) 50%,
+                rgba(255, 255, 255, 0) 55%
+            );
+            transform: rotate(30deg);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% {
+                left: -50%;
+            }
+            100% {
+                left: 150%;
+            }
+        }
+        
+        .qris-request {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 0, 255, 0.1);
+            border-radius: 15px;
+            border-left: 5px solid var(--neon-pink);
+            text-align: center;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 50px 0;
+            margin-top: 80px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #777;
+            font-size: 1rem;
+            position: relative;
+        }
+        
+        footer::before {
+            content: 'ANDIKA STORE';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--dark-bg);
+            padding: 0 20px;
+            color: var(--neon-blue);
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 3px;
+            font-size: 1.5rem;
+        }
+        
+        .music-player {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 350px;
+            background: rgba(10, 10, 20, 0.9);
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+        
+        .music-player.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .music-player h4 {
+            color: var(--neon-blue);
+            margin-bottom: 15px;
+            font-family: 'Orbitron', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .music-control {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 101;
+            border: 1px solid var(--neon-blue);
+            box-shadow: 0 0 15px var(--neon-blue);
+            transition: all 0.3s ease;
+        }
+        
+        .music-control:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 25px var(--neon-blue);
+        }
+        
+        .music-control i {
+            font-size: 24px;
+            color: var(--neon-blue);
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 25px;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .product-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .music-player {
+                width: calc(100% - 40px);
+                left: 20px;
+                right: 20px;
+                bottom: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <!-- Replace with your logo image -->
+                <img src="https://files.catbox.moe/96cnim.jpg" alt="Andika Store Logo">
+                <div class="logo-text">
+                    <h1>ANDIKA STORE</h1>
+                    <p>Premium Panel Services</p>
+                </div>
+            </div>
+            
+            <div class="social-links">
+                <a href="https://wa.me/6288704664738" class="whatsapp" target="_blank" title="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://instagram.com/yourusername" class="instagram" target="_blank" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://whatsapp.com/channel/0029Vb6oCKEIiRoqzVuPvN3r" class="channel" target="_blank" title="WhatsApp Channel">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+        </header>
+        
+        <section class="hero">
+            <h2>PREMIUM PTERODACTYL<br>PANEL SERVICES</h2>
+            <p>High performance game panels with affordable prices and premium quality</p>
+            <a href="#products" class="btn btn-neon">EXPLORE PRODUCTS</a>
+        </section>
+        
+        <section id="products" class="neon-box">
+            <h3><i class="fas fa-server"></i> PANEL PTERODACTYL</h3>
+            <p>Various Pterodactyl panel options with different specifications</p>
+            
+            <div class="product-list">
+                <div class="product-item" onclick="openWhatsApp('Halo, saya ingin membeli PANEL PTERODACTYL - RAM 1 GB CPU 30% seharga 1.000 RUPIAH')">
+                    <h4>RAM 1 GB CPU 30%</h4>
+                    <div class="price">1.000 RUPIAH</div>
+                    <p>Basic specifications for small projects</p>
+                    <button class="buy-btn">BUY NOW</button>
+                </div>
+                
+                <div class="product-item" onclick="openWhatsApp('Halo, saya ingin membeli PANEL PTERODACTYL - RAM 2 GB CPU 50% seharga 2.000 RUPIAH')">
+                    <h4>RAM 2 GB CPU 50%</h4>
+                    <div class="price">2.000 RUPIAH</div>
+                    <p>Suitable for medium projects</p>
+                    <button class="buy-btn">BUY NOW</button>
+                </div>
+                
+                <div class="product-item" onclick="openWhatsApp('Halo, saya ingin membeli PANEL PTERODACTYL - RAM 3 GB CPU 70% seharga 3.000 RUPIAH')">
+                    <h4>RAM 3 GB CPU 70%</h4>
+                    <div class="price">3.000 RUPIAH</div>
+                    <p>For larger needs</p>
+                    <button class="buy-btn">BUY NOW</button>
+                </div>
+                
+                <div class="product-item" onclick="openWhatsApp('Halo, saya ingin membeli PANEL PTERODACTYL - RAM 4 GB CPU 90% seharga 4.000 RUPIAH')">
+                    <h4>RAM 4 GB CPU 90%</h4>
+                    <div class="price">4.000 RUPIAH</div>
+                    <p>High performance</p>
+                    <button class="buy-btn">BUY NOW</button>
+                </div>
+                
+                <div class="product-item" onclick="openWhatsApp('Halo, saya ingin membeli PANEL PTERODACTYL - RAM 5 GB CPU 110% seharga 5.000 RUPIAH')">
+                    <h4>RAM 5 GB CPU 110%</h4>
+                    <div class="price">5.000 RUPIAH</div>
+                    <p>For heavy projects</p>
+                    <button class="buy-btn">BUY NOW</button>
+                </div>
+                
+                <div class="product-item" onclick="openWhatsApp('Halo, saya ingin membeli PANEL PTERODACTYL - RAM 6 GB CPU 120% seharga 6.000 RUPIAH')">
+                    <h4>RAM 6 GB CPU 120%</h4>
+                    <div class="price">6.000 RUPIAH</div>
+                    <p>Premium specifications</p>
+                    <button class="buy-btn">BUY NOW</button>
+                </div>
+                
+                <div class="product-item" onclick="openWhatsApp('Halo, saya ingin membeli PANEL PTERODACTYL - RAM 7 GB CPU 150% seharga 7.000 RUPIAH')">
+                    <h4>RAM 7 GB CPU 150%</h4>
+                    <div class="price">7.000 RUPIAH</div>
+                    <p>For extreme needs</p>
+                    <button class="buy-btn">BUY NOW</button>
+                </div>
+                
+                <div class="product-item" onclick="openWhatsApp('Halo, saya ingin membeli PANEL PTERODACTYL - RAM UNLI CPU UNLI seharga 8.000 RUPIAH')">
+                    <h4>RAM UNLI CPU UNLI</h4>
+                    <div class="price">8.000 RUPIAH</div>
+                    <p>Unlimited specifications</p>
+                    <button class="buy-btn">BUY NOW</button>
+                </div>
+            </div>
+        </section>
+        
+        <section class="neon-box">
+            <h3><i class="fas fa-users"></i> RESELLER PANEL</h3>
+            <p>Reseller packages for your business</p>
+            
+            <div class="product-list">
+                <div class="product-item" onclick="openWhatsApp('Halo, saya ingin membeli RESELER PANEL - 1 BULAN seharga 10.000 RUPIAH')">
+                    <h4>1 MONTH</h4>
+                    <div class="price">10.000 RUPIAH</div>
+                    <p>1 month reseller package</p>
+                    <button class="buy-btn">BUY NOW</button>
+                </div>
+                
+                <div class="product-item" onclick="openWhatsApp('Halo, saya ingin membeli RESELER PANEL - PERMANEN seharga 22.000 RUPIAH')">
+                    <h4>PERMANENT</h4>
+                    <div class="price">22.000 RUPIAH</div>
+                    <p>Permanent reseller package</p>
+                    <button class="buy-btn">BUY NOW</button>
+                </div>
+            </div>
+        </section>
+        
+        <section class="neon-box">
+            <h3><i class="fas fa-tools"></i> OTHER SERVICES</h3>
+            <p>Additional services we provide</p>
+            
+            <div class="product-list">
+                <div class="product-item" onclick="openWhatsApp('Halo, saya tertarik dengan JASA RUN SC/PASANG BOT WA')">
+                    <h4>RUN SC/INSTALL WA BOT</h4>
+                    <p>WhatsApp bot installation service</p>
+                    <button class="buy-btn">CONTACT US</button>
+                </div>
+                
+                <div class="product-item" onclick="openWhatsApp('Halo, saya tertarik dengan MURID BUG PERMA')">
+                    <h4>PERMA BUG STUDENT</h4>
+                    <p>Permanent bug lessons</p>
+                    <button class="buy-btn">CONTACT US</button>
+                </div>
+                
+                <div class="product-item" onclick="openWhatsApp('Halo, saya tertarik dengan JASA INSTALL PANEL')">
+                    <h4>PANEL INSTALLATION</h4>
+                    <p>Professional panel installation</p>
+                    <button class="buy-btn">CONTACT US</button>
+                </div>
+            </div>
+        </section>
+        
+        <section class="neon-box">
+            <h3><i class="fas fa-money-bill-wave"></i> PAYMENT METHODS</h3>
+            <p>Payment methods we accept</p>
+            
+            <div class="payment-methods">
+                <div class="payment-method">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Logo_dana_blue.svg" alt="DANA">
+                    <div class="info">
+                        <h4>DANA</h4>
+                        <p>089514430541 (Andika Store)</p>
+                    </div>
+                </div>
+                
+                <div class="payment-method">
+                    <img src="https://files.catbox.moe/xgdemr.jpg" alt="GoPay" style="background: white; padding: 5px; border-radius: 5px;">
+                    <div class="info">
+                        <h4>GoPay</h4>
+                        <p>089514430541 (Andika Store)</p>
+                    </div>
+                </div>
+                
+                <div class="qris-request">
+                    <h4><i class="fas fa-qrcode"></i> QRIS</h4>
+                    <p>For QRIS payments, please contact admin via WhatsApp</p>
+                    <a href="https://wa.me/6288704664738" class="btn" target="_blank">Contact Admin</a>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <p>&copy; 2025 ANDIKA STORE. All Rights Reserved.</p>
+            <p>Premium Panel Services</p>
+        </footer>
+    </div>
+    
+    <!-- YouTube Music Player -->
+    <div class="music-player" id="musicPlayer">
+        <h4><i class="fas fa-music"></i> NOW PLAYING</h4>
+        <iframe 
+            width="100%" 
+            height="200" 
+            src="https://www.youtube.com/embed/3UlvbSy2ms0?autoplay=1&controls=0&showinfo=0&rel=0&modestbranding=1" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+        </iframe>
+    </div>
+    
+    <div class="music-control" id="musicControl">
+        <i class="fas fa-music"></i>
+    </div>
+    
+    <script>
+        // WhatsApp function
+        function openWhatsApp(message) {
+            const phoneNumber = "6281234567890"; // Replace with your WhatsApp number
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
+        }
+        
+        // Music player toggle
+        const musicControl = document.getElementById('musicControl');
+        const musicPlayer = document.getElementById('musicPlayer');
+        let playerVisible = false;
+        
+        musicControl.addEventListener('click', function() {
+            playerVisible = !playerVisible;
+            if (playerVisible) {
+                musicPlayer.classList.add('show');
+                musicControl.innerHTML = '<i class="fas fa-times"></i>';
+            } else {
+                musicPlayer.classList.remove('show');
+                musicControl.innerHTML = '<i class="fas fa-music"></i>';
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Animate elements on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.neon-box, .hero').forEach(el => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(50px)";
+            el.style.transition = "all 0.8s ease";
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
